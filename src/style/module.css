@@ -1,7 +1,7 @@
 @charset "utf-8";
 html {
   color: #000;
-  background:rgb(238,238,238);;
+  /* background:rgb(238,238,238);; */
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
