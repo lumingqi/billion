@@ -5,7 +5,7 @@
       </div>
       <yd-cell-group>
         <yd-cell-item arrow>
-            <img slot="icon" src="/assets/images/person-active">
+            <img class="uerimages" slot="icon" src="/assets/images/person-active.png">
             <span slot="left">我的</span>
             <span slot="right">个人信息</span>
         </yd-cell-item>
@@ -41,6 +41,9 @@ export default {
 }
 </script>
 <style>
-
+.uerimages{
+    height: 1.5rem !important;
+    margin: 0.3rem 0;
+}
 </style>
 
