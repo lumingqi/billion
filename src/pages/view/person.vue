@@ -9,7 +9,8 @@
             <span slot="left">我的</span>
             <span slot="right">个人信息</span>
         </yd-cell-item>
-    </yd-cell-group>
+      </yd-cell-group>
+      
   </div>
 </template>
 
