@@ -5,6 +5,8 @@ import trend from '../pages/view/trend.vue'
 import detailview from '../pages/view/detailview.vue'
 import person from '../pages/view/person.vue'
 import explain from '../pages/view/explain.vue'
+//二级页面
+import login from '../pages/subview/login.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +36,12 @@ export default new VueRouter({
             path: '/person',
             name: 'person',
             component: person
+          },
+          //二级页面
+          {
+            path: '/login',
+            name: 'login',
+            component: login
           }
     ]
 })

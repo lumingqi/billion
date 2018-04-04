@@ -4,7 +4,7 @@
           <yd-navbar title="我 的" bgcolor="#ed293f" fontsize="20px" color="#fff"></yd-navbar>
       </div>
       <yd-cell-group>
-        <yd-cell-item arrow>
+        <yd-cell-item arrow type="a" href="#/login">
             <img class="uerimages" slot="icon" src="/assets/images/person-active.png">
             <span slot="left">我的</span>
             <span slot="right">个人信息</span>
@@ -30,10 +30,12 @@
   </div>
 </template>
 
+
 <script>
 import Vue from 'vue'
 import {CellGroup, CellItem} from 'vue-ydui/dist/lib.rem/cell'
 import {Button, ButtonGroup} from 'vue-ydui/dist/lib.rem/button'
+
 Vue.component(CellGroup.name, CellGroup)
 Vue.component(CellItem.name, CellItem)
 Vue.component(Button.name, Button)

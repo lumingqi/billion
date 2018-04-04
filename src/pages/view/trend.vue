@@ -57,9 +57,9 @@ export default {
     data() {
         return {
             Sliderdata:[
-                {to:'#/detailview',src:'/assets/images/1.jpg'},
-                {to:'#/explain',src:'/assets/images/2.jpg'},
-                {to:'#/person',src:'/assets/images/3.jpg'}
+                {to:'#/detailview',src:'./assets/images/1.jpg'},
+                {to:'#/explain',src:'./assets/images/2.jpg'},
+                {to:'#/person',src:'./assets/images/3.jpg'}
             ],
             rollnoticedata:[
                 {icon:'荐',content:'荣耀V9 3月超级钜惠！'},
@@ -67,16 +67,16 @@ export default {
                 {icon:'超推荐',content:'京东服饰 早春新品低至7折'}
             ],
             groupdata:[
-                {src:'/assets/images/3.jpg',text:'网格1'},
-                {src:'/assets/images/3.jpg',text:'网格2'},
-                {src:'/assets/images/3.jpg',text:'网格3'},
-                {src:'/assets/images/3.jpg',text:'网格4'},
-                {src:'/assets/images/3.jpg',text:'网格5'},
-                {src:'/assets/images/3.jpg',text:'网格6'},
-                {src:'/assets/images/3.jpg',text:'网格7'},
-                {src:'/assets/images/3.jpg',text:'网格8'},
-                {src:'/assets/images/3.jpg',text:'网格9'},
-                {src:'/assets/images/3.jpg',text:'网格10'},
+                {src:'./assets/images/3.jpg',text:'网格1'},
+                {src:'./assets/images/3.jpg',text:'网格2'},
+                {src:'./assets/images/3.jpg',text:'网格3'},
+                {src:'./assets/images/3.jpg',text:'网格4'},
+                {src:'./assets/images/3.jpg',text:'网格5'},
+                {src:'./assets/images/3.jpg',text:'网格6'},
+                {src:'./assets/images/3.jpg',text:'网格7'},
+                {src:'./assets/images/3.jpg',text:'网格8'},
+                {src:'./assets/images/3.jpg',text:'网格9'},
+                {src:'./assets/images/3.jpg',text:'网格10'},
             ]
         }
     },

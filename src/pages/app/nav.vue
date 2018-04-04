@@ -2,8 +2,12 @@
     <yd-tabbar active-color="#ed293f">
         <yd-tabbar-item title="首页" link="/" :active="istrend">
             <!-- <yd-icon name="home" slot="icon" size="0.54rem" active></yd-icon> -->
-            <img v-if="!istrend" slot="icon" src="/assets/images/trend.png" size="0.54rem">
+            <!-- <i slot="icon" style="background:url("+icon11+")"></i> -->
+            <nav-img slot="icon" v-if="!istrend"></nav-img>
+            <img v-if="!istrend" slot="icon" src="/assets/images/trend.png"  size="0.54rem">
             <img v-if="istrend" slot="icon" src="/assets/images/trend-active.png" size="0.54rem">
+            <!-- <span v-if="!istrend" slot="icon" size="0.54rem" class="notrend"></span>
+            <span v-if="istrend" slot="icon" size="0.54rem" class="istrend"></span> -->
         </yd-tabbar-item>
         <yd-tabbar-item title="购物车" link="/detailview" :active="isdetailview">
             <!-- <yd-icon name="shopcart-outline" slot="icon" size="0.54rem"></yd-icon> -->
@@ -24,13 +28,15 @@
 </template>
 
 <script type="text/babel">
+import icon11 from '@/images/trend.png'
     export default {
         data() {
             return {
                 istrend:true,
                 isdetailview:false,
                 isexplain:false,
-                isperson:false
+                isperson:false,
+                fgg:'@/images/trend.png'
             }
         },
         watch: {
@@ -38,6 +44,9 @@
         },
         computed: {
             
+        },
+        mounted(){
+            console.log('-----',icon11)
         },
         methods: {
             routelinkchange(){

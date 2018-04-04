@@ -1,6 +1,4 @@
-const {
-    resolve
-} = require('path')
+var path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -9,85 +7,77 @@ const publicPath = ''
 
 module.exports = (options = {}) => ({
     entry: {
-        index: './src/main.js'
+        vendor: './src/index.js'
     },
     output: {
-        path: resolve(__dirname, 'build'),
-        filename: options.dev ? '[name].js' : '[name].js?[chunkhash]',
+        path: path.resolve(__dirname, 'dist'),
+        filename: options.dev ? 'bundle.js' : 'bundle.js?[chunkhash]',
         chunkFilename: '[id].js?[chunkhash]',
-        publicPath: options.dev ? '/assets/' : publicPath
     },
+    externals: [
+    ],
     module: {
         rules: [{
-                test: /\.vue$/,
-                use: ['vue-loader']
+            test: /\.vue$/,
+            use: ['vue-loader']
+        }, {
+            test: /\.js$/,
+            use: ['babel-loader'],
+            exclude: /node_modules/
+        }, {
+            test: /\.html$/,
+            use: [{
+                loader: 'html-loader',
+                options: {
+                    root: path.resolve(__dirname, 'src'),
+                    attrs: ['img:src', 'link:href']
+                }
+            }]
+        }, {
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'css-loader'
+            })
+        }, {
+            test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
+            exclude: /favicon\.png$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 10000
+                }
+            }]
+        }, {
+            test: /\.less$/,
+            use: [{
+                loader: "style-loader" // creates style nodes from JS strings
             }, {
-                test: /\.js$/,
-                use: ['babel-loader'],
-                exclude: /node_modules/
+                loader: "css-loader" // translates CSS into CommonJS
             }, {
-                test: /\.html$/,
-                use: [{
-                    loader: 'html-loader',
-                    options: {
-                        root: resolve(__dirname, 'src'),
-                        attrs: ['img:src', 'link:href']
-                    }
-                }]
-            }, {
-                test: /\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: "css-loader"
-                })
-            },
-            /*
-                       {
-                           test: /\.css$/,
-                           //loader: ExtractTextPlugin.extract("style-loader", "css-loader")
-                           use: ['style-loader', 'css-loader', 'postcss-loader']
-                       },
-                      {
-                         test: /favicon\.png$/,
-                         use: [{
-                           loader: 'file-loader',
-                           options: {
-                             name: '[name].[ext]?[hash]'
-                           }
-                         }]
-                       },*/
-            {
-                test: /\.(png|jpg|jpeg|gif|eot|ttf|woff|woff2|svg|svgz)(\?.+)?$/,
-                exclude: /favicon\.png$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 10000
-                    }
-                }]
-            }
+                loader: "less-loader" // compiles Less to CSS
+            }]
+        }
         ]
     },
     plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'manifest']
-        }),
         new HtmlWebpackPlugin({
-            template: 'src/index.html'
+            template: './src/index.html'
         }),
-        new ExtractTextPlugin('styles.css')
+        new ExtractTextPlugin('styles.css'),
     ],
     resolve: {
         alias: {
-            '~': resolve(__dirname, 'src')
+            '~': path.resolve(__dirname, 'src'),
+            '@': path.resolve(__dirname, 'assets')
         }
     },
     devServer: {
         host: '0.0.0.0',
-        port: 8099,
+        port: 8088,
         proxy: {
             '/api/': {
-                target: 'http://127.0.0.1:8099',
+                target: 'http://127.0.0.1:8088',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''
